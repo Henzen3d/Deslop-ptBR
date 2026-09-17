@@ -14,6 +14,12 @@ import argparse
 import json
 from pathlib import Path
 
+# Configura suporte a UTF-8 no console do Windows sem estourar UnicodeEncodeError
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 # Definição dos Padrões e Regras de Detecção
 RULES = [
     {
