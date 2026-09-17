@@ -73,7 +73,19 @@ mkdir -p ~/.hermes/skills/writing/deslop-ptbr
 cp integrations/hermes/deslop-ptbr.md ~/.hermes/skills/writing/deslop-ptbr/SKILL.md
 ```
 
-### 5. ChatGPT, Claude.ai ou Gemini Web
+### 5. OpenAI Codex
+O Codex lê nativamente o padrão [Agent Skills](https://developers.openai.com/codex/skills). Basta clonar ou copiar para o diretório `.agents/skills/`:
+```bash
+# Global para todos os projetos
+mkdir -p ~/.agents/skills/deslop-ptbr
+cp -r /caminho/para/deslop-ptbr/* ~/.agents/skills/deslop-ptbr/
+
+# Ou apenas no projeto atual:
+mkdir -p .agents/skills/deslop-ptbr
+cp -r /caminho/para/deslop-ptbr/* .agents/skills/deslop-ptbr/
+```
+
+### 6. ChatGPT, Claude.ai ou Gemini Web
 Não usa terminal? Basta abrir o arquivo [`dist/standalone-prompt.md`](dist/standalone-prompt.md), copiar o texto e colar nas suas **Instruções Personalizadas (Custom Instructions)** ou nas configurações do seu **Custom GPT** / **Claude Project**.
 
 ---
