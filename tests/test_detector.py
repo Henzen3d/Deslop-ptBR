@@ -56,6 +56,13 @@ class TestDetectorPTBR(unittest.TestCase):
         self.assertEqual(res["total_violacoes"], 0)
         self.assertEqual(res["score"], 0)
 
+    def test_shadowboxing_and_chatbot_residue(self):
+        texto = "Você poderia pensar que a IA substitui o autor. Certamente! Espero que isso ajude!"
+        res = analyze_text(texto)
+        rule_ids = [v["regra_id"] for v in res["violacoes"]]
+        self.assertIn("W37", rule_ids)
+        self.assertIn("W38", rule_ids)
+
     def test_code_blocks_are_protected(self):
         texto = """
 Aqui está o código:

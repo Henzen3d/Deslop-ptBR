@@ -222,12 +222,13 @@ Este projeto é uma obra comunitária de consolidação e adaptação cultural q
 3. [**deslop-text**](https://github.com/adamdunkels/deslop-text) (Adam Dunkels) — Pela taxonomia sistemática e rigorosa dos *warning signs*.
 4. [**avoid-ai-writing**](https://github.com/conorbronsdon/avoid-ai-writing) (Conor Bronsdon) — Pelo contrato editorial estrito e pelo sistema de vocabulário em Tiers.
 5. [**humanizar**](https://skilldev.pro/skills/humanizar/) (Fabricio Telles / Skill+DEV) — Pela sensibilidade aos padrões nativos do português brasileiro e formulação da Trava Factual Canônica.
+6. [**humanizer**](https://github.com/blader/humanizer) (Pedro Sorrentino / Blader) — Pela técnica de *Match Your Voice* (amostra de escrita do autor), erradicação de resíduos de chatbot e combate a objeções imaginárias.
 
 ---
 
 ## 🏷️ Tags & SEO para a Comunidade
 
-`deslop-ptbr` • `humanizar-ia` • `anti-ai-slop` • `escrita-humana` • `agent-skills` • `claude-code` • `cursorrules` • `portugues-brasil` • `remover-vicios-ia` • `chatgpt-brasil` • `escrita-natural`
+`deslop-ptbr` • `humanizar-ia` • `anti-ai-slop` • `hermes-agent` • `escrita-humana` • `agent-skills` • `claude-code` • `cursorrules` • `portugues-brasil` • `remover-vicios-ia` • `chatgpt-brasil` • `escrita-natural`
 
 ---
 

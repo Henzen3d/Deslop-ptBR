@@ -167,3 +167,13 @@ Os perfis de voz definem a cadência, a escolha vocabular e o nível de formalid
 - **Características:**
   - Clareza, neutralidade e precisão gramatical.
   - Tom equilibrado, sem informalidade excessiva nem burocratismo.
+
+---
+
+## 14. 🧬 Amostra do Autor (Match Your Voice)
+- **Quando usar:** Quando o usuário fornece 1 a 3 parágrafos de um texto escrito originalmente por ele mesmo e pede para a reescrita seguir seu tom exato.
+- **Como o agente opera:**
+  1. Analisa a extensão média das frases da amostra (ritmo).
+  2. Extrai padrões de pontuação (uso de travessões, parênteses, reticências, exclamações).
+  3. Mapeia preferências léxicas e gírias / contrações autênticas do autor.
+  4. Aplica a reescrita espelhando essa identidade estilística exata, sem inventar fatos.

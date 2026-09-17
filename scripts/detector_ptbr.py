@@ -161,6 +161,20 @@ RULES = [
         "severidade": "Média",
         "regex": r"\b(mudança de paradigma|mindset|visão holística|gerar sinergia|pensar fora da caixa|elevar o patamar)\b",
         "sugestao": "Substitua a buzzword por uma descrição da ação prática."
+    },
+    {
+        "id": "W37",
+        "nome": "Objeções Imaginárias / Espantalho (Shadowboxing)",
+        "severidade": "Alta",
+        "regex": r"\b(você pode estar pensando que|você poderia pensar que|alguém poderia argumentar que|uma abordagem tentadora seria|não estamos dizendo que)\b",
+        "sugestao": "Remova a falsa objeção e afirme a decisão e justificativa real diretamente."
+    },
+    {
+        "id": "W38",
+        "nome": "Resíduo de Chatbot (Chatbot Residue)",
+        "severidade": "Alta",
+        "regex": r"\b(com certeza!|certamente!|ótima pergunta!|espero que isso ajude|espero ter ajudado|fique à vontade para perguntar)\b",
+        "sugestao": "Corte saudações ou despedidas robóticas remanescentes da conversa."
     }
 ]
 

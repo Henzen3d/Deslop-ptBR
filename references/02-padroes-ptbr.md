@@ -374,7 +374,31 @@ Padrões sutis que não chegam a ser um erro isolado, mas que no conjunto dão a
 
 ---
 
-### W36 · Dramatização Desnecessária de Erros
+### W36 · Dramatização de Erros
 
 - **Gatilhos:** *"Ops!"*, *"Infelizmente, algo deu errado."*, *"Pedimos desculpas pelo transtorno."* (em logs, terminais e respostas a desenvolvedores).
 - **Correção:** Respostas técnicas não precisam de drama ou afeto artificial. Aponte o erro técnico, a causa raiz e o comando de solução.
+
+---
+
+### W37 · Objeções Imaginárias e Falsos Espantalhos (Shadowboxing)
+
+- **Gatilhos:** *"Você pode estar pensando que X, mas..."*, *"Alguém poderia argumentar que..."*, *"Uma abordagem tentadora seria X, mas isso é um erro"*, *"Não estamos dizendo que Y não importa..."*.
+- **O Problema:** A IA cria oponentes fictícios e refuta objeções que ninguém fez para simular profundidade dialética.
+- **Antes (IA):**
+  > *"Você poderia pensar que a melhor solução seria reescrever todo o backend em Go, mas essa seria uma escolha precipitada."*
+- **Depois (Humano):**
+  > *"Otimizamos as queries críticas no Postgres existente antes de cogitar qualquer reescrita de backend."*
+- **Regra:** Remova a objeção inventada. Declare a decisão e a justificativa real diretamente.
+
+---
+
+### W38 · Resíduos de Chatbot (Chatbot Residue)
+
+- **Gatilhos:** *"Com certeza!"*, *"Certamente!"*, *"Ótima pergunta!"*, *"Espero que este guia tenha ajudado!"*, *"Fique à vontade para perguntar caso tenha dúvidas!"*.
+- **O Problema:** Frases de cortesia robótica geradas em interfaces de chat que acabam sobrando dentro de artigos, documentações, e-mails e posts de blog.
+- **Antes (IA):**
+  > *"Com certeza! Aqui está o resumo das métricas da sprint. [...] Espero que isso ajude a alinhar as expectativas do time!"*
+- **Depois (Humano):**
+  > *"Aqui está o resumo das métricas da sprint: [...]"*
+- **Regra:** Remova qualquer resquício de saudação ou despedida de chatbot em textos destinados a publicação ou documentação.
