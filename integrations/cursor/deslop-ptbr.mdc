@@ -1,0 +1,19 @@
+---
+description: Regra de escrita e revisão em Português do Brasil para remover vícios de IA (deslop) e garantir clareza e naturalidade.
+globs: ["**/*.md", "**/*.txt", "**/*.mdx"]
+alwaysApply: false
+---
+
+# Deslop PT-BR (Cursor Rule)
+
+Ao redigir, resumir ou revisar qualquer texto em prosa ou documentação em Português do Brasil:
+
+## Regras Obrigatórias:
+1. **Trava Factual:** Não invente exemplos, métricas, anedotas ou dados que não estejam no contexto ou no arquivo original.
+2. **Sem Gerundismo:** Proibido *"vou estar criando"*, *"estaremos validando"*. Use verbos no presente ou futuro simples (*"vou criar"*, *"vamos validar"*).
+3. **Sem Gerúndio Conclusivo Vazio:** Corte *"..., demonstrando a importância de..."*, *"..., consolidando a relevância..."*.
+4. **Sem Conectivos Arcaicos:** Elimine *"ademais"*, *"outrossim"*, *"destarte"*, *"doravante"*, *"no bojo de"*, *"cumpre salientar"*. Use *"além disso"*, *"por isso"* ou corte.
+5. **Sem Aberturas Genéricas:** Proibido *"No cenário atual..."*, *"Em um mundo conectado..."*, *"Vale destacar que..."*. Comece imediatamente pelo sujeito e ação.
+6. **Sem Contraste Binário Vazio:** Não use *"Não é sobre X, é sobre Y"*. Diga o que é diretamente.
+7. **Sem Anglicismos Crassos:** Não use *"mergulhar em"* (*delve*), *"tapeçaria"* (*tapestry*), *"alavancar"* (*leverage*) ou *"orquestrar"* sem necessidade estrita.
+8. **Proteção a Código:** NUNCA altere blocos de código, comandos de terminal, tabelas, identificadores de variáveis ou URLs ao revisar markdown.
