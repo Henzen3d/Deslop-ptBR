@@ -80,6 +80,20 @@ O código acima roda no servidor.
         self.assertNotIn("W1", rule_ids)
         self.assertNotIn("W3", rule_ids)
 
+    def test_ignore_rules(self):
+        texto = "Olha só: como fica o trânsito agora? — uma boa pergunta."
+        # W12 (olha só), W17 (pergunta retórica), W15 (travessões)
+        res_normal = analyze_text(texto)
+        self.assertTrue(any(v["regra_id"] in ["W12", "W17"] for v in res_normal["violacoes"]))
+
+        # Com ignore_rules (estilo roteiro de áudio/podcast)
+        res_ignored = analyze_text(texto, ignore_rules="W12,W17,W15")
+        rule_ids = [v["regra_id"] for v in res_ignored["violacoes"]]
+        self.assertNotIn("W12", rule_ids)
+        self.assertNotIn("W17", rule_ids)
+        self.assertNotIn("W15", rule_ids)
+        self.assertEqual(res_ignored["score"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()

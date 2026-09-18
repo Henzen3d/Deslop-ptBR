@@ -96,7 +96,7 @@ RULES = [
         "id": "W12",
         "nome": "Pivô de Falsa Conversação",
         "severidade": "Alta",
-        "regex": r"\b(a verdade é que|a realidade é uma só|para ser bem sincero|olha só:)\b",
+        "regex": r"\b(a verdade é que|a realidade é uma só|para ser bem sincero|olha só:?)(?=\s|$)",
         "sugestao": "Corte a introdução e vá direto ao fato."
     },
     {
@@ -190,8 +190,17 @@ def strip_code_blocks(text: str) -> str:
     return text
 
 
-def analyze_text(text: str):
-    """Analisa o texto e retorna lista de violações e score de slop."""
+def analyze_text(text: str, ignore_rules=None):
+    """Analisa o texto e retorna lista de violações e score de slop.
+    ignore_rules: conjunto ou lista de IDs de regras a ignorar (ex: {'W12', 'W17', 'W15'})
+    """
+    if ignore_rules is None:
+        ignore_rules = set()
+    elif isinstance(ignore_rules, str):
+        ignore_rules = {r.strip().upper() for r in ignore_rules.split(",") if r.strip()}
+    else:
+        ignore_rules = {str(r).strip().upper() for r in ignore_rules}
+
     lines = text.splitlines()
     clean_text = strip_code_blocks(text)
     clean_lines = clean_text.splitlines()
@@ -205,6 +214,8 @@ def analyze_text(text: str):
     for idx, line in enumerate(clean_lines, start=1):
         # Ignora cabeçalhos ou linhas vazias para certas regras
         for rule in RULES:
+            if rule["id"] in ignore_rules:
+                continue
             matches = list(re.finditer(rule["regex"], line, re.IGNORECASE))
             for m in matches:
                 trecho = m.group(0).strip()
@@ -220,30 +231,32 @@ def analyze_text(text: str):
                 score_points += weights.get(rule["severidade"], 5)
 
     # Verificação de em-dashes em excesso (W15)
-    em_dash_count = len(re.findall(r"—", clean_text))
-    if em_dash_count > 3:
-        violations.append({
-            "linha": 1,
-            "regra_id": "W15",
-            "regra_nome": "Travessões em Excesso (Em-dash abuse)",
-            "severidade": "Média",
-            "trecho": f"{em_dash_count} travessões (—) encontrados no texto",
-            "sugestao": "Reduza os travessões para no máximo 1-2 em textos longos. Prefira vírgulas ou orações curtas."
-        })
-        score_points += 10
+    if "W15" not in ignore_rules:
+        em_dash_count = len(re.findall(r"—", clean_text))
+        if em_dash_count > 3:
+            violations.append({
+                "linha": 1,
+                "regra_id": "W15",
+                "regra_nome": "Travessões em Excesso (Em-dash abuse)",
+                "severidade": "Média",
+                "trecho": f"{em_dash_count} travessões (—) encontrados no texto",
+                "sugestao": "Reduza os travessões para no máximo 1-2 em textos longos. Prefira vírgulas ou orações curtas."
+            })
+            score_points += 10
 
     # Verificação de Emojis em excesso (W21)
-    emojis = re.findall(r"[🚀💡🎯🔥✨👉👏]", clean_text)
-    if len(emojis) >= 3:
-        violations.append({
-            "linha": 1,
-            "regra_id": "W21",
-            "regra_nome": "Emojis Decorativos em Excesso",
-            "severidade": "Média",
-            "trecho": f"{len(emojis)} emojis de ênfase encontrados: {' '.join(set(emojis))}",
-            "sugestao": "Corte os emojis decorativos. Deixe a força do texto carregar a mensagem."
-        })
-        score_points += 10
+    if "W21" not in ignore_rules:
+        emojis = re.findall(r"[🚀💡🎯🔥✨👉👏]", clean_text)
+        if len(emojis) >= 3:
+            violations.append({
+                "linha": 1,
+                "regra_id": "W21",
+                "regra_nome": "Emojis Decorativos em Excesso",
+                "severidade": "Média",
+                "trecho": f"{len(emojis)} emojis de ênfase encontrados: {' '.join(set(emojis))}",
+                "sugestao": "Corte os emojis decorativos. Deixe a força do texto carregar a mensagem."
+            })
+            score_points += 10
 
     # Cálculo da pontuação final (0 a 100)
     # Considera também a extensão do texto para normalizar
@@ -277,6 +290,7 @@ def main():
     parser.add_argument("arquivo", nargs="?", help="Caminho do arquivo Markdown ou texto para auditar (opcional se usar stdin)")
     parser.add_argument("--json", action="store_true", help="Retorna saída estruturada em JSON (ideal para CI/CD)")
     parser.add_argument("--max-score", type=int, default=100, help="Falha com código 1 se o score for maior que este valor")
+    parser.add_argument("--ignore", type=str, default="", help="IDs de regras a ignorar separados por vírgula (ex: --ignore W12,W17,W15)")
 
     args = parser.parse_args()
 
@@ -293,7 +307,7 @@ def main():
             sys.exit(0)
         conteudo = sys.stdin.read()
 
-    resultado = analyze_text(conteudo)
+    resultado = analyze_text(conteudo, ignore_rules=args.ignore)
 
     if args.json:
         print(json.dumps(resultado, ensure_ascii=False, indent=2))

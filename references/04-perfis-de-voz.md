@@ -92,7 +92,7 @@ Os perfis de voz definem a cadência, a escolha vocabular e o nível de formalid
 
 ---
 
-## 8. 🧑‍🏫 Didático / Explicador
+## 8. 📚 Didático / Explicador
 - **Quando usar:** Documentações de produto, tutoriais de código, onboarding e materiais educativos.
 - **Características:**
   - Ritmo de conversa com o leitor: pergunta inicial ➔ analogia concreta ➔ exemplo prático.
@@ -177,3 +177,21 @@ Os perfis de voz definem a cadência, a escolha vocabular e o nível de formalid
   2. Extrai padrões de pontuação (uso de travessões, parênteses, reticências, exclamações).
   3. Mapeia preferências léxicas e gírias / contrações autênticas do autor.
   4. Aplica a reescrita espelhando essa identidade estilística exata, sem inventar fatos.
+
+---
+
+## 15. 🎙️ Roteiro de Áudio / Broadcast / Locução (Jornal Falado & Podcasts)
+- **Quando usar:** Textos que serão lidos em voz alta, roteiros de podcasts, boletins matinais (ex: Vale da Liberdade / BM), narração em vídeo ou rádio.
+- **Exceções Legítimas (Regras da Casa):**
+  - **Perguntas retóricas (W17):** PERMITIDAS e encorajadas quando usadas como inflexão vocal de locutor para prender a atenção do ouvinte (*"E o trânsito agora?"*, *"Lembra daquela promessa de campanha?"*).
+  - **Marcadores orais de atenção (W12):** PERMITIDOS (*"Olha só:"*, *"Pois é"*, *"Repare nisso"*), pois funcionam como gancho acústico na escuta.
+  - **Travessões e pausas (W15):** PERMITIDOS com moderação, funcionando como marcadores rítmicos de respiração para locutores humanos ou modelos TTS.
+  - **Oralidade autêntica:** *"né"*, *"a gente"*, *"tá"* são essenciais para evitar tom engravatado de texto escrito.
+- **O que CONTINUA ESTREITAMENTE PROIBIDO neste perfil:**
+  - Gerundismo de SAC (*"vou estar informando"*, *"estaremos acompanhando"*).
+  - Conectivos arcaicos de oficialês (*"ademais"*, *"outrossim"*, *"destarte"*).
+  - Aberturas clichês (*"No cenário atual..."*, *"Em um mundo conectado..."*).
+  - Contrastes binários vazios (*"Não é sobre X, é sobre Y"*).
+  - Traduções espelhadas (*"tapeçaria"*, *"alavancar"*, *"orquestrar"*).
+- **Exemplo de Roteiro de Áudio Humano:**
+  > *"Bom dia! Olha só: a chuva da madrugada complicou a descida da serra. A pista sentido capital tem dez quilômetros de fila por causa de uma árvore caída perto do quilômetro 42. E a previsão para o resto do dia? Mais pancadas isoladas à tarde. Guarda o guarda-chuva no carro."*

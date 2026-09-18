@@ -160,7 +160,7 @@ O deslop adapta o registro conforme o objetivo do seu texto (veja detalhes em [`
 5. **📱 Post de Rede Social (LinkedIn / X Brasil):** Gancho na primeira linha, parágrafos curtos, zero pieguice.
 6. **📲 WhatsApp / Mensagem Rápida:** Oralidade pura, contrações autênticas (*"tá"*, *"pra"*), zero enrolação.
 7. **⚖️ Jurídico Esclarecido:** Mantém a terminologia técnica do Direito sem prolixidade inútil.
-8. **🧑‍🏫 Didático / Explicador:** Analogias concretas, ritmo de conversa e clareza para documentações.
+8. **📚 Didático / Explicador:** Analogias concretas, ritmo de conversa e clareza para documentações.
 9. **📋 Português Simplificado (Lei 15.263/2025):** Frases curtas (13-18 palavras), máxima acessibilidade ao cidadão.
 10. **➡️ Assertivo / Executivo:** Conclusão ou recomendação na linha 1; negrito funcional para decisões.
 11. **🔹 Enxuto / Terminal / Dev:** Fatos e comandos diretos; zero conversa fiada.
