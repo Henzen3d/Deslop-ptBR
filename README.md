@@ -10,11 +10,15 @@
 [![Padrão: Agent Skills](https://img.shields.io/badge/Padr%C3%A3o-Agent%20Skills-purple.svg?style=flat-square)](SKILL.md)
 [![Testes](https://img.shields.io/badge/Testes-100%25%20Passando-brightgreen.svg?style=flat-square)](#)
 
+<br />
+
+<img src="assets/banner.jpeg" alt="Deslop PT-BR Banner" width="100%" style="border-radius: 8px; margin: 16px 0;" />
+
 <p align="center">
   <a href="#-o-problema">O Problema</a> •
   <a href="#-instalação-rápida">Instalação</a> •
-  <a href="#-os-36-sinais-de-alerta-w1-a-w36">Os 36 Sinais</a> •
-  <a href="#-os-13-perfis-de-voz">13 Perfis de Voz</a> •
+  <a href="#-os-36-sinais-de-alerta-w1-a-w36">Sinais de Alerta</a> •
+  <a href="#-os-13-perfis-de-voz">Perfis de Voz</a> •
   <a href="#-antes--depois">Antes & Depois</a> •
   <a href="#-detector-cli-em-python">Detector CLI</a> •
   <a href="#-créditos-e-inspirações">Créditos</a>
