@@ -1,0 +1,33 @@
+name: Deslop Gate (Linter Anti-IA PT-BR)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  audit-and-test:
+    name: Testes e Auditoria Editorial PT-BR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Executar Testes de Regressão
+        run: |
+          python -m unittest discover tests/ -v
+
+      - name: Auditar Documentação (README.md)
+        run: |
+          python scripts/detector_ptbr.py README.md --markdown --allow-proof
+
+      - name: Testar Build Gate Estrito em Texto Limpo
+        run: |
+          python scripts/detector_ptbr.py --text "Lançamos hoje o novo painel de controle. Ele resolve o cruzamento manual de faturas." --fail-if-slop

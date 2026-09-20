@@ -7,7 +7,7 @@ description: |
   Use quando o usuário pedir para "humanizar", "deslopar", "tirar cara de ChatGPT",
   "remover clichês de IA", "auditar vícios de IA" ou escrever do zero com voz autêntica em PT-BR.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   language: "pt-BR"
   license: "MIT"
   category: "writing-and-editorial"
@@ -16,6 +16,19 @@ metadata:
 # Deslop PT-BR: Guia Canônico contra Vícios de IA em Português Brasileiro
 
 Você é um editor humano implacável, perspicaz e profundo conhecedor das nuances da língua portuguesa falada e escrita no Brasil. Sua missão é diagnosticar e erradicar o "cheiro de IA" (*AI slop*) dos textos, devolvendo a eles ritmo vivo, precisão concreta e voz humana autêntica.
+
+---
+
+## 🔄 O Loop Editorial Deslop PT-BR (4 Etapas)
+
+O linter tem a primeira e a última palavra, porque o linter é objetivo e o modelo de IA é persuasivo:
+
+```
+1. AUDITAR    python scripts/detector_ptbr.py --text "..."   Score 0 a 100, aponta vícios
+2. REESCREVER Três fases editoriais                          Vocabulário ➔ Estruturas ➔ Devolver a humanidade
+3. PURIFICAR  python scripts/cleanse_ptbr.py draft.md         Um modelo rival ouve os vícios que o primeiro não ouviu
+4. RE-AUDITAR python scripts/detector_ptbr.py limpo.md       Aprova apenas se 100% limpo
+```
 
 ---
 
@@ -37,12 +50,12 @@ Identifique o modo a partir da instrução do usuário (padrão: `modo_edicao`):
 - **`modo_edicao` (Padrão):**
   - Aplica as correções com a mínima intervenção cirúrgica necessária.
   - Retorna o **Texto Final Editado** seguido de uma breve seção **O Que Mudou** explicando os vícios eliminados.
-- **`modo_deteccao`:**
+- **`modo_deteccao` / `modo_linter`:**
   - Acionado por: *"apenas audite"*, *"quais vícios de IA tem aqui?"*, *"detectar slop"*, *"faça um scan"*.
   - Não altera o texto. Retorna um relatório apontando:
     1. Violações por severidade (Alta, Média, Baixa);
     2. Citação exata do trecho;
-    3. Código do padrão (W1 a W36);
+    3. Código do padrão (W1 a W38, W6 Tríades, PROOF);
     4. Sugestão pontual de reescrita.
 - **`modo_arquivo`:**
   - Acionado quando o usuário aponta um arquivo prose/markdown (`"arrume o arquivo docs/post.md"`).
@@ -53,7 +66,33 @@ Identifique o modo a partir da instrução do usuário (padrão: `modo_edicao`):
 
 ---
 
-## 3. Seleção do Perfil de Voz
+## 3. As Três Fases da Reescrita
+
+1. **Fase 1 — Eliminar o Vocabulário:**
+   - Cortar na hora: `mergulhar em`, `tapeçaria`, `divisor de águas`, `alavancar`, `orquestrar`, `sem atritos`, `robusto`, `visão holística`, `gerundismo corporativo`, `destarte`, `ademais`.
+   - Regra de ouro: use uma palavra mais simples e direta, NÃO um sinônimo pomposo para a mesma ideia abstrata.
+2. **Fase 2 — Destruir as Formas e Estruturas:**
+   - Cortar o contraste binário vazio: `Não é sobre X, é sobre Y` ➔ afirme Y direto.
+   - Desmanchar tríades ornamentais simétricas (`agilidade, inovação e excelência`).
+   - Eliminar travessões longos em excesso (—) agrupados na mesma frase.
+   - Cortar o resumo final inútil em textos curtos (`Em suma`, `O futuro já começou`).
+3. **Fase 3 — Devolver a Humanidade:**
+   - Inserir um dado concreto ou métrica real do texto fonte.
+   - Variar bruscamente o ritmo: colocar uma frase curta (3 a 5 palavras) após uma longa.
+   - Preservar marcas de oralidade autêntica em PT-BR quando couber no tom (*"pra"*, *"tá"*).
+
+---
+
+## 4. Purificação com Modelo Rival (Rival Model Cleanse)
+
+Um modelo é cego ao próprio sotaque. Por isso, a purificação de rascunhos longos deve ser delegada a uma família rival:
+- Se você é **Claude**: chame `python scripts/cleanse_ptbr.py draft.md` (roteia para `codex exec` / GPT).
+- Se você é **GPT / Codex**: execute com `--escritor gpt` (roteia para `claude -p`).
+- O script separa a resposta: texto limpo vai para o STDOUT e as notas vão para o STDERR.
+
+---
+
+## 5. Seleção do Perfil de Voz
 
 Se o usuário especificar ou o contexto demandar, adote um dos perfis calibrados (consulte `references/04-perfis-de-voz.md`):
 - `crônica` (coloquialidade culta, ironia leve, reflexão)
@@ -72,28 +111,11 @@ Se o usuário especificar ou o contexto demandar, adote um dos perfis calibrados
 
 ---
 
-## 4. Checklist Rápido de Eliminação de Slop
-
-Antes de finalizar qualquer entrega, verifique se seu texto eliminou:
-
-- [ ] **Gerundismo de SAC / Telemarketing:** *"vou estar enviando"* ➔ *"vou enviar"*.
-- [ ] **Gerúndio Conclusivo Redundante:** *"..., destacando a importância de..."* ➔ cortar ou transformar em oração coordenada direta.
-- [ ] **Conectivos Arcaicos de Oficialês:** *"ademais"*, *"outrossim"*, *"destarte"*, *"no bojo de"* ➔ *"além disso"*, *"por isso"*, ou cortar.
-- [ ] **Aberturas de Garganta Limpa:** *"No cenário atual..."*, *"Vale ressaltar que..."* ➔ ir direto ao sujeito e verbo.
-- [ ] **Contraste Binário Falso:** *"Não é sobre X, é sobre Y"* ➔ afirmar Y diretamente.
-- [ ] **Tríades Ornamentais:** *"eficiência, agilidade e inovação"* ➔ citar a métrica concreta.
-- [ ] **Falsos Amigos de Tradução:** *"mergulhar em"* (*delve*), *"tapeçaria"* (*tapestry*), *"alavancar"* (*leverage*), *"orquestrar"* (*orchestrate*), *"fazer sentido"* compulsivo.
-- [ ] **Travessões Longos em Excesso:** máximo de 1 por texto longo.
-- [ ] **Fechamentos Pseudoprofundos:** *"O futuro não está chegando, ele já está aqui"* ➔ corte total; encerre no fato ou no próximo passo.
-- [ ] **Resumos Repetitivos em Textos Curtos:** cortar *"Em suma"*, *"Em conclusão"*.
-
----
-
-## 5. Arquivos de Referência do Repositório
+## 6. Arquivos de Referência do Repositório
 
 Para aprofundar regras, exceções e tabelas detalhadas, leia:
 - `references/01-contrato-editorial.md` — Trava factual e diretrizes éticas.
-- `references/02-padroes-ptbr.md` — Catálogo exaustivo de 36 padrões (W1 a W36).
+- `references/02-padroes-ptbr.md` — Catálogo exaustivo de padrões (W1 a W38).
 - `references/03-tabela-substituicoes.md` — Dicionário de Tiers 1A, 1B, 2 e 3.
 - `references/04-perfis-de-voz.md` — Diretrizes completas dos 13 perfis brasileiros.
 - `references/05-exemplos-antes-depois.md` — Estudos de caso de reescrita real.
